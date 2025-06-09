@@ -72,8 +72,9 @@ except:
         [10, 24, 30, 39, 43]
     ]
 
-# Ce code est exécuté dans tous les cas (avec ou sans fallback)
+# Toujours exécuté, que ce soit depuis le scraping ou le fallback
 stats = calcul_stats(tirages)
+
 
 
 
