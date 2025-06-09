@@ -48,7 +48,30 @@ def generer_grille_euromillions():
 # Interface Streamlit
 st.title("🔮 Pronostics Loto & EuroMillions (IA légère)")
 try:
+    try:
     tirages = recuperer_tirages_loto()
+    if not tirages or len(tirages) < 10:
+        raise ValueError("Pas assez de tirages récupérés.")
+except:
+    st.warning("Tirages non récupérables en ligne. Utilisation de données locales.")
+    tirages = [
+        [7, 30, 37, 40, 45],
+        [5, 12, 27, 30, 44],
+        [11, 22, 24, 37, 45],
+        [9, 21, 30, 37, 42],
+        [3, 12, 24, 35, 45],
+        [6, 19, 24, 30, 38],
+        [1, 14, 17, 30, 37],
+        [12, 24, 28, 32, 45],
+        [4, 7, 24, 36, 37],
+        [2, 5, 30, 34, 42],
+        [15, 16, 30, 31, 45],
+        [8, 12, 24, 33, 37],
+        [13, 18, 20, 24, 30],
+        [19, 24, 27, 30, 45],
+        [10, 24, 30, 39, 43]
+    ]
+
     stats = calcul_stats(tirages)
 
     if st.button("🎰 Générer grille Loto IA"):
